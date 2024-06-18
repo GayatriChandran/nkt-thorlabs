@@ -1,4 +1,4 @@
-# nkt-measure
+# nkt-thorlabs
 Code to control a Thorlabs PM100D power meter and NKT VARIA to test spectral properties of a sample. 
 
 Setup : NKT SuperK EXTREME laser source is connected to a SuperK VARIA 
