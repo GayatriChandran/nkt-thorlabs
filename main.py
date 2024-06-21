@@ -32,9 +32,9 @@ if __name__ == "__main__":
     print("Set range auto and wait 500ms    ...")
     power_meter.sense.power.dc.range.auto = "ON"
     power_meter.sense.average.count = 200
-
-    varia.short_setpoint = spectrum[0]-0.5                              # Set VARIA wavelength
     varia.long_setpoint = spectrum[0]+0.5
+    varia.short_setpoint = spectrum[0]-0.5                              # Set VARIA wavelength
+    
 
     time.sleep(5)                                              # Enough time to get into position.
     
@@ -43,9 +43,9 @@ if __name__ == "__main__":
  
         power_meter.sense.correction.wavelength = float(spectrum[i])        # Set power-meter wavelength         
         print("Wavelength :", power_meter.sense.correction.wavelength)
-
-        varia.short_setpoint = spectrum[i]-0.5                              # Set VARIA wavelength and bandwidth
         varia.long_setpoint = spectrum[i]+0.5
+        varia.short_setpoint = spectrum[i]-0.5                              # Set VARIA wavelength and bandwidth
+        
 
         time.sleep(.5)                                                       # Wait to settle
 
