@@ -22,7 +22,7 @@ varia = Varia()                                                 # NKT VARIA obje
 
 if __name__ == "__main__":
 
-    meta = 'dose_240'                                           # Which metasurface is being measured. 
+    meta = 'dose_240'                                           # Which sample is being measured ?
     start_wavelength = 500                                      # Input start wavelength (nm) for sweep
     end_wavelength = 650                                        # Input end wavelength (nm)
 
