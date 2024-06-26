@@ -56,7 +56,7 @@ if __name__ == "__main__":
     file_name = str(start_wavelength) + '_' + str(end_wavelength) + '_NKT70' + '_meta_' + meta + '.csv'
     np.savetxt(file_name, np.column_stack((spectrum, readings)), delimiter=',', header="wavelength,power")
 
-    # Before signing out, 'relax' the grating window by setting a 10nm bandwidth at 'standard' wavelengths.
+    # Before signing out, go back to the default 10nm bandwidth in the red region.
     varia.short_setpoint = 630
     varia.long_setpoint = 640
 
