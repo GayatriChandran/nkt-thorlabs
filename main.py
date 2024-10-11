@@ -22,7 +22,7 @@ varia = Varia()                                                 # NKT VARIA obje
 
 if __name__ == "__main__":
 
-    meta = 'dose_240'                                           # Which metasurface is being measured. 
+    meta = 'dose_240'                                           # Which sample is being measured ?
     start_wavelength = 500                                      # Input start wavelength (nm) for sweep
     end_wavelength = 650                                        # Input end wavelength (nm)
 
@@ -32,9 +32,9 @@ if __name__ == "__main__":
     print("Set range auto and wait 500ms    ...")
     power_meter.sense.power.dc.range.auto = "ON"
     power_meter.sense.average.count = 200
-
-    varia.short_setpoint = spectrum[0]-0.5                              # Set VARIA wavelength
     varia.long_setpoint = spectrum[0]+0.5
+    varia.short_setpoint = spectrum[0]-0.5                              # Set VARIA wavelength
+    
 
     time.sleep(5)                                              # Enough time to get into position.
     
@@ -43,9 +43,9 @@ if __name__ == "__main__":
  
         power_meter.sense.correction.wavelength = float(spectrum[i])        # Set power-meter wavelength         
         print("Wavelength :", power_meter.sense.correction.wavelength)
-
-        varia.short_setpoint = spectrum[i]-0.5                              # Set VARIA wavelength and bandwidth
         varia.long_setpoint = spectrum[i]+0.5
+        varia.short_setpoint = spectrum[i]-0.5                              # Set VARIA wavelength and bandwidth
+        
 
         time.sleep(.5)                                                       # Wait to settle
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     file_name = str(start_wavelength) + '_' + str(end_wavelength) + '_NKT70' + '_meta_' + meta + '.csv'
     np.savetxt(file_name, np.column_stack((spectrum, readings)), delimiter=',', header="wavelength,power")
 
-    # Before signing out, 'relax' the grating window by setting a 10nm bandwidth at 'standard' wavelengths.
+    # Before signing out, go back to the default 10nm bandwidth in the red region.
     varia.short_setpoint = 630
     varia.long_setpoint = 640
 
